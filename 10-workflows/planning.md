@@ -1,10 +1,6 @@
 ---
 name: planning
-description: Use after requirements/context are clear and before implementation to define the smallest safe execution plan, dependencies, checks, and handoffs.
-depends_on:
-  - ../00-core/constitution.md
-  - ./codebase-search.md
-  - ../40-reference/change-impact-analysis-template.md
+description: Use when the user asks to plan a complex change, major feature, or when the task requires dependency ordering.
 ---
 
 # Planning

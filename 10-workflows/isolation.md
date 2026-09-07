@@ -1,9 +1,6 @@
 ---
 name: isolation
-description: Use before editing code for any new feature, fix, or maintenance task. Confirms branch/workspace isolation and overlap risk.
-depends_on:
-  - ../00-core/constitution.md
-  - ../40-reference/git-policy.md
+description: Use before editing code to ensure the workspace and branch are isolated for the current task.
 ---
 
 # Isolation

@@ -1,10 +1,6 @@
 ---
 name: codebase-search
-description: Use before implementation or debugging to find relevant code quickly with search, symbols, filenames, errors, routes, configs, and tests.
-depends_on:
-  - ../00-core/source-of-truth.md
-  - ../01-routing/context-loading-policy.md
-  - ../40-reference/command-discovery.md
+description: Use when asked to find where a component, route, error, or configuration is defined, or when exploring the codebase.
 ---
 
 # Codebase search

@@ -1,11 +1,6 @@
 ---
 name: production-feedback
-description: Use after deployment, incidents, regressions, or live user reports to close the loop into product, architecture, tests, and runbooks.
-depends_on:
-  - ../00-core/evidence-and-findings.md
-  - ../20-specialists/platform-sre.md
-  - ../30-quality/security-red-team.md
-  - ../40-reference/incident-record-template.md
+description: Use when the user reports a production incident, live bug, or needs to update runbooks/monitoring.
 ---
 
 # Production feedback

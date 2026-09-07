@@ -1,14 +1,6 @@
 ---
 name: implementation
-description: Use when building code against approved requirements, contracts, and architecture.
-depends_on:
-  - ../00-core/constitution.md
-  - ./isolation.md
-  - ./codebase-search.md
-  - ./planning.md
-  - ../30-quality/developer-verification.md
-  - ../40-reference/change-impact-analysis-template.md
-  - ../40-reference/implementation-notes-template.md
+description: Use when the user asks to write code for a new feature, fix a bug, or implement a planned change.
 ---
 
 # Implementation
@@ -20,9 +12,7 @@ Before coding:
 - run codebase search
 - identify contracts and affected components
 - run change impact analysis for non-trivial changes
-- use `../20-specialists/building-components.md` when the change creates or refactors reusable UI components
-- use `../20-specialists/frontend-engineering.md`, `../20-specialists/backend-engineering.md`, or `../20-specialists/ai-ml-engineering.md` when the implementation needs stack-specific guidance
-- use `../20-specialists/observability-instrumentation.md` when the feature needs logs, metrics, health checks, or redaction decisions
+- review `AGENTS.md` for core engineering rules and constraints
 
 Build vertically:
 
