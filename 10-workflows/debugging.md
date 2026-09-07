@@ -20,5 +20,5 @@ Order:
 9. Add regression coverage.
 10. Hand off evidence.
 
-If the same failure persists or the fix keeps growing, use `00-core/recovery-and-loop-control.md`.
+If the same failure persists or the fix keeps growing, refer to the **Recovery and Loop Control** section in `AGENTS.md`.
 

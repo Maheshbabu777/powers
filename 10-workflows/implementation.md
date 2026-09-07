@@ -12,9 +12,7 @@ Before coding:
 - run codebase search
 - identify contracts and affected components
 - run change impact analysis for non-trivial changes
-- use `20-specialists/building-components.md` when the change creates or refactors reusable UI components
-- use `20-specialists/frontend-engineering.md`, `20-specialists/backend-engineering.md`, or `20-specialists/ai-ml-engineering.md` when the implementation needs stack-specific guidance
-- use `20-specialists/observability-instrumentation.md` when the feature needs logs, metrics, health checks, or redaction decisions
+- review `AGENTS.md` for core engineering rules and constraints
 
 Build vertically:
 
