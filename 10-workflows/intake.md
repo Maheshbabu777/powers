@@ -1,10 +1,6 @@
 ---
 name: task-intake
-description: Use at the start of any meaningful task to classify work, ambiguity, risk, required context, and next workflow.
-depends_on:
-  - ../00-core/constitution.md
-  - ../01-routing/router.md
-  - ../40-reference/task-record-template.md
+description: Use when the user provides a vague request, new feature idea, or asks to start a new task.
 ---
 
 # Task intake

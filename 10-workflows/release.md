@@ -1,10 +1,6 @@
 ---
 name: release
-description: Use when preparing to deploy or ship. Confirms gates, rollback/recovery, observability, and deployment evidence.
-depends_on:
-  - ../00-core/constitution.md
-  - ../20-specialists/platform-sre.md
-  - ../40-reference/rollback-recovery-template.md
+description: Use when the user asks to prepare a deployment, ship a feature, or verify release readiness.
 ---
 
 # Release

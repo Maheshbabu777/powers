@@ -1,11 +1,6 @@
 ---
 name: maintenance
-description: Use for docs-only changes, refactors, dependency updates, cleanup, tech debt, or tooling work that is not a product feature.
-depends_on:
-  - ../00-core/constitution.md
-  - ./isolation.md
-  - ../40-reference/technical-debt-template.md
-  - ../40-reference/change-impact-analysis-template.md
+description: Use when the user asks to refactor code, update dependencies, fix technical debt, or write docs.
 ---
 
 # Maintenance

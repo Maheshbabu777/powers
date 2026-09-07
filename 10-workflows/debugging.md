@@ -1,11 +1,6 @@
 ---
 name: debugging
-description: Use when behavior is broken, tests fail, CI fails, or production/user reports need investigation.
-depends_on:
-  - ../00-core/recovery-and-loop-control.md
-  - ./codebase-search.md
-  - ../30-quality/evidence-capture.md
-  - ../40-reference/finding-template.md
+description: Use when the user asks to investigate a bug, failing test, CI failure, or broken behavior.
 ---
 
 # Debugging
@@ -25,5 +20,5 @@ Order:
 9. Add regression coverage.
 10. Hand off evidence.
 
-If the same failure persists or the fix keeps growing, use `../00-core/recovery-and-loop-control.md`.
+If the same failure persists or the fix keeps growing, use `00-core/recovery-and-loop-control.md`.
 

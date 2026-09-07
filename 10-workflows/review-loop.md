@@ -1,10 +1,6 @@
 ---
 name: review-loop
-description: Use when responding to PR review, CI findings, static analysis, security review, or AI reviewer feedback. Bounded loop, fresh results only.
-depends_on:
-  - ../00-core/recovery-and-loop-control.md
-  - ../00-core/evidence-and-findings.md
-  - ../40-reference/finding-template.md
+description: Use when the user asks to address PR comments, fix lint/CI errors, or respond to reviewer feedback.
 ---
 
 # Review loop
