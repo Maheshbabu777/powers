@@ -108,6 +108,8 @@ Typical path: Intake -> Isolation -> Codebase Search -> Planning -> Implementati
 
 # Skill Index
 
+> A skill is a single markdown file in its existing folder unless it needs bundled scripts or assets, in which case it becomes `<name>/SKILL.md` with its supporting files alongside it. Do not create a folder for a skill that has no supporting files.
+
 | Path | Trigger Condition |
 |---|---|
 | `10-workflows/codebase-search.md` | Use when asked to find where a component, route, error, or configuration is defined, or when exploring the codebase. |
