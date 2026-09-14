@@ -123,3 +123,4 @@ Typical path: Intake -> Isolation -> Codebase Search -> Planning -> Implementati
 | `10-workflows/release.md` | Use when the user asks to prepare a deployment, ship a feature, or verify release readiness. |
 | `10-workflows/review-loop.md` | Use when the user asks to address PR comments, fix lint/CI errors, or respond to reviewer feedback. |
 | `30-quality/before-after-visual-evidence/SKILL.md` | Use when a UI change needs before/after screenshots or a PR-ready visual comparison. |
+| `30-quality/editorial-product-frontend-design.md` | Use when building or refining a multi-page product site, addressing frontend design, theming, layout, or interactions. |
