@@ -1,37 +1,71 @@
----
-name: swe-skills-playbook
-description: Production-oriented SWE Skills Playbook. Use AGENTS.md as the root map for routing agents through engineering work.
----
+# Feature Development Powers
 
-# SWE Skills Playbook
+A focused, light-by-default playbook for building and changing features with AI agents.
 
-This playbook provides a structured, production-oriented engineering workflow for AI agents.
+## Philosophy
 
-## Architecture & Load Order
+- **Light by default.** Small bugs, corrections, and simple add-ons use only core skills. No heavy process unless the task warrants it.
+- **Heavy skills on demand.** Security review, performance analysis, and deep observability are detailed and useful, but only loaded when explicitly needed.
+- **Quality built in.** Code structure (`wiring.md`) and clean human writing (`soul.md`) are part of the normal path, not afterthoughts.
+- **Frontend-aware.** Design system guidance and visual before/after tooling are available when touching UI.
+- **Preferences evolve.** How you like to work is captured in `preferences.md` and grows over time as agents learn your patterns.
+- **Evidence over claims.** Verification requires proof, not assertions.
 
-There is exactly one entrypoint for agents:
-- `AGENTS.md` - The single source of truth containing the core constitution, hard rules, gate tables, and the skill index. 
+## How to use
 
-Agents are instructed to always read `AGENTS.md` before starting any task. The skill index inside `AGENTS.md` provides concrete triggers that tell the agent which specific workflow file (under `10-workflows/`) or quality skill (under `30-quality/`) to read based on the user's prompt.
+1. **Start at `AGENTS.md`** — the single entrypoint. It contains the rules, skill index, and workflow spine.
+2. **Core skills** (`core/`) are the default path for everyday feature work, including structure and writing quality.
+3. **Frontend skills** (`frontend/`) load only when you're touching UI.
+4. **On-demand skills** (`on-demand/`) load only when you ask for them or the change clearly needs them.
+5. **Preferences** (`preferences.md`) — agents read and update as you work together.
 
-Project-specific configuration belongs in the consuming project's own repository (e.g., via a project overlay).
+## Structure
 
-## Workflow spine
-
-```text
-intake -> isolation -> codebase search -> plan -> build -> prove -> review -> release -> learn
+```
+powers/
+├── AGENTS.md              ← Single entrypoint: rules + skill index
+├── CLAUDE.md              ← Claude directive (points to AGENTS.md)
+├── README.md              ← This file
+├── LICENSE
+├── preferences.md         ← Living preference layer
+│
+├── core/                  ← Default path for feature work
+│   ├── intake.md
+│   ├── isolation.md
+│   ├── search.md
+│   ├── plan.md
+│   ├── implement.md
+│   ├── debug.md
+│   ├── prove.md
+│   ├── review.md
+│   ├── wiring.md          ← Actions vs services, shared mechanics
+│   └── soul.md            ← Cut AI tells, add human voice
+│
+├── frontend/              ← Load when touching UI
+│   ├── frontendeng.md     ← UI components, state, accessibility
+│   ├── design-system.md
+│   └── before-after/      ← Visual proof skill + scripts
+│
+├── on-demand/             ← Explicit opt-in only
+│   ├── security-review.md
+│   ├── performance.md
+│   └── observability.md
+│
+└── templates/             ← Useful templates only
+    ├── task-record.md
+    ├── finding.md
+    ├── pr-description.md
+    └── verification-evidence.md
 ```
 
-Small work skips unnecessary steps. Risk controls depth.
+## What was removed
 
-## Source basis
+This repo was intentionally pruned from a heavier enterprise playbook. Removed material includes:
 
-Built from:
-- original flat team files mapped into a single entrypoint architecture
+- Multi-role gate system (7 gates, mandatory security red-team)
+- Specialist role files (architecture, platform/SRE, quality engineering, etc.)
+- Large archive of reference material
+- Unused stub templates (ADR, threat model, design system template, etc.)
+- Project overlay system
 
-Reference patterns adopted from `https://github.com/michaelshimeles/skills`:
-- trigger-focused skill descriptions
-- isolated task setup
-- narrow code-structure skill design
-- before/after visual proof for UI review and PRs (using `@vercel/before-and-after`)
-- explicit routing rather than file guessing
+The focus is now on practical feature development with progressive disclosure of depth.
