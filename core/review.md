@@ -1,46 +1,30 @@
 ---
 name: review
-description: Use when the user asks to address PR comments, fix lint/CI errors, or respond to reviewer feedback.
+description: How to handle PR comments, CI failures, and lint errors on an existing change.
 ---
 
-# Review
+# PR feedback
 
-Handle review feedback systematically. Do not thrash.
+This is for responding to feedback on a change. Checking your own work against the spec is [prove.md](prove.md).
 
 ## Loop
 
-1. Collect review feedback (human, CI, linter, AI reviewer)
-2. Confirm results are fresh for the current commit
-3. Parse findings
-4. Separate actionable issues from notes, style nits, or false positives
-5. Fix actionable issues
-6. Re-run relevant checks
-7. Resolve addressed items or document why not
-8. Repeat until clean or capped
+1. Collect the feedback: human comments, CI, linters, AI reviewers.
+2. Make sure the results are for the current commit, not an older one.
+3. Sort it: real problems, style nits, and false positives.
+4. Fix the real problems first, grouping related fixes.
+5. Re-run the checks.
+6. Reply to each item: fixed, or why not.
+7. Repeat, up to 3 rounds unless the user says otherwise.
 
-## Iteration cap
+If a comment changes what the feature should do, update the spec before the code.
 
-Default: **3 iterations** unless the user says otherwise.
+## When you hit the cap
 
-If capped, report:
-- Iterations completed
-- Findings resolved
-- Findings remaining (with reasons)
-- Current evidence
-- Why continuing is not safe or productive
-
-## Do
-
-- Fix real issues before arguing about style
-- Group related fixes into a single pass
-- Re-run checks after each fix round
+Report: rounds done, what's fixed, what's left and why, and why another round isn't worth it.
 
 ## Don't
 
-- Ignore actionable feedback
-- Silently mark items as resolved without fixing them
-- Keep looping past the cap without asking
-
-## Before finishing
-
-Run `core/soul.md` on the commit message, PR title, and PR body before committing or opening the PR. AI-sounding text in review artifacts erodes trust. This step is easy to forget in the heat of a task. Do not skip it.
+- Mark something resolved that you didn't fix.
+- Argue about style before the real issues are fixed.
+- Keep going past the cap without asking.

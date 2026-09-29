@@ -1,86 +1,42 @@
 ---
 name: soul
-description: Use when writing or editing any text a human will read — commit messages, PR titles and bodies, docs, code comments, replies. Apply before committing, opening a PR, or sending. Leave prose you did not write or edit alone.
+description: Checklist for text a human will read - commit messages, PR titles and bodies, code comments, docs, and .context/ entries. Apply before committing or opening a PR. Leave prose you didn't write alone.
 ---
 
 # Soul
 
-Cut AI tells from text. Add human voice. Apply to anything you write that a human will read.
+Write like an engineer leaving a note for a teammate. Plain, specific, short.
 
-## Process
+## Commit messages and PR titles
 
-1. **Scan** for the patterns below
-2. **Rewrite.** Preserve meaning, match intended tone
-3. **Add voice** (see next section)
-4. **Self-audit:** "What makes this obviously AI-generated?" Fix remaining tells
+- Follow the commit rules in the project's `.context/preferences.md`. Check with `scripts/check-commit.sh --message "..."`.
+- The subject says what changed in the code, not what you did. `fix: keep redirect target after login`, not `fix: fixed the bug`.
+- The body (if any) says why, in one to three lines.
 
-## Adding voice
+## PR bodies
 
-Removing patterns is half the job. Sterile, voiceless writing is just as obvious.
+- Start from [../templates/pr-description.md](../templates/pr-description.md).
+- Why before what. Link the spec.
+- Show evidence as commands and output, not adjectives.
 
-- **Have opinions.** React to facts instead of neutrally listing pros and cons.
-- **Vary rhythm.** Short sentences. Then longer ones that take their time. Mix it up.
-- **Acknowledge complexity.** "Impressive but also kind of unsettling" beats "impressive."
-- **Use "I" when it fits.** First person is not unprofessional.
-- **Let some mess in.** Perfect structure looks machine-made.
-- **Be specific.** Not "this is concerning" but "there's something unsettling about agents churning away at 3am."
+## Code comments
 
-Check `preferences.md` for personal voice and tone preferences.
+- Explain why, never restate what the code does.
+- No comments about the change itself ("added this for the new feature"). That's what commits are for.
 
-## Patterns to detect and fix
+## Cut these on sight
 
-### Content
+- **Filler words:** delve, leverage, utilize, facilitate, foster, robust, seamless, comprehensive, crucial, pivotal, showcase, underscore, enhance, landscape, tapestry, testament. Use the plain word.
+- **Soft verbs:** "serves as", "stands as", "boasts" become "is" or "has".
+- **Padding:** "in order to", "it is important to note that", "due to the fact that".
+- **Stacked hedges:** "could potentially possibly".
+- **Puffery:** "not just X but Y", "a testament to".
+- **Rule of three:** lists of three that exist only for rhythm.
+- **Tacked-on -ing clauses:** "..., ensuring reliability".
+- **Chatbot lines:** "Great question", "I hope this helps", "Let me know if".
+- **Formatting tells:** bold on every other phrase, bold-label bullets, emojis, Title Case Headings, curly quotes.
+- **Borrowed lines:** any sentence that could appear unchanged in another project's README. Replace it with a file name, a number, or a mechanism.
 
-- **Puffery.** "pivotal moment", "testament to", "evolving landscape", "setting the stage for", "indelible mark", "deeply rooted". Cut it, state what happened.
-- **Superficial -ing phrases.** "highlighting...", "ensuring...", "reflecting...", "showcasing...", "fostering...". Delete or expand with real detail.
-- **Promotional language.** "nestled", "vibrant", "breathtaking", "groundbreaking", "renowned", "stunning". Use neutral descriptions.
-- **Vague attributions.** "Experts believe", "Industry reports suggest", "Some critics argue". Name the source or delete.
-- **Formulaic challenges.** "Despite challenges... continues to thrive." Replace with specific facts.
+## Last check
 
-### Language
-
-- **AI vocabulary.** Additionally, crucial, delve, enduring, enhance, fostering, garner, interplay, intricate, landscape (abstract), pivotal, showcase, tapestry (abstract), testament, underscore, vibrant. Replace with plain words.
-- **Fancy ways to say "is".** "serves as", "stands as", "boasts", "features". Just say "is" or "has".
-- **"Not just X, but Y."** State the point directly.
-- **Rule of three.** Forcing ideas into groups of three. Use the natural number.
-- **Synonym cycling.** Protagonist, main character, central figure, hero all in one paragraph. Pick one, repeat it.
-- **False ranges.** "from X to Y" where X and Y are not on a meaningful scale. List topics directly.
-
-### Style
-
-- **Em dash overuse.** Avoid em dashes entirely. Use periods or commas only. Em dashes are an AI tell, and reaching for parentheses instead just trades one tell for another.
-- **Colon overuse.** Colons are fine before a list or example. Not as mid-sentence connectors.
-- **Boldface overuse.** Don't bold every proper noun or acronym.
-- **Inline-header lists.** The tell is a bold label and colon that restates the line. Convert to prose.
-- **Title case headings.** Use sentence case.
-- **Decorative emojis.** Remove from headings and bullets.
-- **Curly quotes.** Replace with straight quotes.
-
-### Communication artifacts
-
-- **Chatbot phrases.** "I hope this helps!", "Let me know if...", "Of course!", "Certainly!", "Found the smoking gun!" Remove.
-- **Sycophantic tone.** "Great question! You're absolutely right!" Respond directly.
-
-### Filler
-
-- **Filler phrases.** "In order to" becomes "To". "Due to the fact that" becomes "Because". "It is important to note that" gets deleted.
-- **Excessive hedging.** "could potentially possibly be argued that it might" becomes "may".
-- **Generic conclusions.** "The future looks bright." State specific plans or facts.
-
-### Jargon
-
-- **Abstract metaphor nouns.** Substrate, wedge, vector, locus, vantage, nexus, primitive (as noun), harness (as metaphor), surface (as in "API surface"), bedrock, scaffolding (as metaphor), modality, paradigm, gold-plating, ratchet (as metaphor), north star, flywheel. Pick the concrete word.
-
-### Plain speech
-
-- Say what it does, not how it feels. Name the mechanism or a number.
-- If the sentence could appear unchanged in another project's docs, it says nothing about this one. Cut it.
-- Shorten or split dense sentences. One idea per sentence.
-- Active voice. Name the actor.
-- Cut adverbs, or use a stronger verb.
-- Prefer the plain word. "utilize" becomes "use", "leverage" becomes "use", "facilitate" becomes "help".
-
-## Scope
-
-- **Apply to:** commit messages, PR titles/bodies, docs, code comments, replies, anything you write or edit for a human reader.
-- **Leave alone:** prose you did not write or edit. Do not rewrite the user's existing docs unless asked.
+Read it once and ask: does anything here sound generated? Fix that, then stop.

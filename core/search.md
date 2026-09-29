@@ -5,7 +5,7 @@ description: Use when asked to find where a component, route, error, or configur
 
 # Search
 
-Use fast search before opening random files.
+Check the Layout section of `.context/project.md` first. Then use fast search before opening random files.
 
 ## Prefer
 

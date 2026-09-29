@@ -1,13 +1,13 @@
 # PR description
 
 ```text
-Task:
-What changed:
+Spec: .context/specs/<slug>.md  (or: small task, no spec)
 Why:
-Risk level:
-How verified:
-Evidence:
-Screenshots/video:
-Known limitations:
+What changed:
+Size: small | normal | risky
+How verified: <commands and results, per criterion>
+Screenshots: <if UI>
+Untested:
+Context updated: <files, or none because ...>
 Follow-up:
 ```

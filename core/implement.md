@@ -1,41 +1,40 @@
 ---
 name: implement
-description: Use when the user asks to write code for a new feature, fix a bug, or implement a planned change.
+description: How to write the code change once the spec and plan are approved (or for a small task, once context is loaded).
 ---
 
 # Implement
 
-## Before coding
+## Before you write code
 
-- [ ] Isolation confirmed (not on `main`, clean branch)
-- [ ] Search done — you know where the relevant code lives
-- [ ] Contracts and affected components identified
-- [ ] Check `preferences.md` for standing implementation preferences
+- You're on a task branch, not `main` ([isolation.md](isolation.md)).
+- For normal and risky tasks, the spec status is `approved`.
+- You know where the code lives. The Layout section of `.context/project.md` is the first place to look.
 
-## Build vertically
+## Build in thin slices
+
+A slice is the thinnest path through every layer that makes **one acceptance criterion** work, with its test:
 
 ```text
-data → service/domain → route/controller → UI/client → tests
+slice 1: criterion 1 -> data + logic + route/UI it needs + its test -> run tests -> tick progress
+slice 2: criterion 2 -> ...
 ```
 
-Prefer small, vertical slices that can be tested independently. Do not build all layers of a feature before testing any of them.
+Don't build all of one layer (all the models, then all the services, then all the UI) before testing anything. That's how you end up with a big untested change at the end.
+
+After each slice, run the tests that cover it. Use the commands in `project.md`. If a command there is wrong, fix it there.
 
 ## Do
 
-- Stay inside known contracts and patterns
-- Follow existing code conventions in the project
-- Keep changes small and reversible
-- Write or update tests alongside the change
-- Reference `preferences.md` for style and tooling choices
+- Follow the conventions in `project.md` and the patterns already in the code around you.
+- Keep changes small and easy to revert.
+- Write or update the test in the same slice as the code.
 
 ## Don't
 
-- Change contracts without stopping to discuss
-- Make sweeping refactors inside a feature branch
-- Skip tests because the change looks simple
-- Introduce new patterns or dependencies without justification
-- Smuggle unrelated cleanup into a feature change
+- Change a public contract (API shape, database schema, config format) without it being in the approved plan. If you find you need to, stop and ask.
+- Add a new dependency or pattern without saying why in the spec notes.
+- Mix in unrelated cleanup. Note it in the hand-off instead.
+- Skip tests because the change looks simple.
 
-## When shared logic appears
-
-If you find yourself duplicating operational mechanics across flows, load `core/wiring.md` to decide what belongs in actions vs a shared service layer. Do not extract for a single caller.
+If the same operational logic now exists in two places, see [wiring.md](wiring.md). Never extract for a single caller.

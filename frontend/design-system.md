@@ -76,6 +76,7 @@ Avoid:
 - Replaying a loading animation when its result is already available.
 - Large page translations that make the interface feel unstable.
 - Motion that ignores `prefers-reduced-motion`.
+- Bouncy or attention-seeking animation. Motion should be quiet and serve a purpose.
 
 Always provide a reduced-motion fallback that shows final states immediately and disables smooth scrolling/animations.
 

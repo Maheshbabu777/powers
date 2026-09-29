@@ -71,4 +71,4 @@ This skill is **on-demand**. Do not load it for every task. Load it when:
 
 ## Output
 
-For each finding, use the finding template in `templates/finding.md`.
+For each finding, use [the finding template](../templates/finding.md). Put the findings in the spec notes, or in the hand-off for a task without a spec.
