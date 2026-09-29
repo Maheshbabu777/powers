@@ -1,71 +1,58 @@
-# Feature Development Powers
+# Powers
 
-A focused, light-by-default playbook for building and changing features with AI agents.
+A feature development workflow for coding agents that works with any agent: Claude Code, Codex, Kiro, Cursor, and others.
 
-## Philosophy
+## The idea
 
-- **Light by default.** Small bugs, corrections, and simple add-ons use only core skills. No heavy process unless the task warrants it.
-- **Heavy skills on demand.** Security review, performance analysis, and deep observability are detailed and useful, but only loaded when explicitly needed.
-- **Quality built in.** Code structure (`wiring.md`) and clean human writing (`soul.md`) are part of the normal path, not afterthoughts.
-- **Frontend-aware.** Design system guidance and visual before/after tooling are available when touching UI.
-- **Preferences evolve.** How you like to work is captured in `preferences.md` and grows over time as agents learn your patterns.
-- **Evidence over claims.** Verification requires proof, not assertions.
+Two things, kept apart:
 
-## How to use
+- **Powers** (this repo) say how to work: size the task, write a spec, get approval, build in slices, verify against the spec, update context. They're the same in every project and agents never write to them.
+- **`.context/`** (inside each project) says what the project is. Agents read it at the start of every task and update it at the end.
 
-1. **Start at `AGENTS.md`** — the single entrypoint. It contains the rules, skill index, and workflow spine.
-2. **Core skills** (`core/`) are the default path for everyday feature work, including structure and writing quality.
-3. **Frontend skills** (`frontend/`) load only when you're touching UI.
-4. **On-demand skills** (`on-demand/`) load only when you ask for them or the change clearly needs them.
-5. **Preferences** (`preferences.md`) — agents read and update as you work together.
-
-## Structure
-
-```
-powers/
-├── AGENTS.md              ← Single entrypoint: rules + skill index
-├── CLAUDE.md              ← Claude directive (points to AGENTS.md)
-├── README.md              ← This file
-├── LICENSE
-├── preferences.md         ← Living preference layer
-│
-├── core/                  ← Default path for feature work
-│   ├── intake.md
-│   ├── isolation.md
-│   ├── search.md
-│   ├── plan.md
-│   ├── implement.md
-│   ├── debug.md
-│   ├── prove.md
-│   ├── review.md
-│   ├── wiring.md          ← Actions vs services, shared mechanics
-│   └── soul.md            ← Cut AI tells, add human voice
-│
-├── frontend/              ← Load when touching UI
-│   ├── frontendeng.md     ← UI components, state, accessibility
-│   ├── design-system.md
-│   └── before-after/      ← Visual proof skill + scripts
-│
-├── on-demand/             ← Explicit opt-in only
-│   ├── security-review.md
-│   ├── performance.md
-│   └── observability.md
-│
-└── templates/             ← Useful templates only
-    ├── task-record.md
-    ├── finding.md
-    ├── pr-description.md
-    └── verification-evidence.md
+```text
+your-project/
+  AGENTS.md                 entry point for most agents
+  CLAUDE.md                 @AGENTS.md
+  .kiro/steering/powers.md  entry point for Kiro (only if the project uses Kiro)
+  .powers/                  this repo, as a git submodule or a copy
+  .context/
+    project.md              stable facts: commands, layout, conventions, gotchas
+    decisions.md            one line per decision
+    preferences.md          how you want work done in this repo, e.g. commit rules
+    specs/<slug>.md         one spec per feature: criteria, plan, progress
 ```
 
-## What was removed
+## Setting up a project
 
-This repo was intentionally pruned from a heavier enterprise playbook. Removed material includes:
+```bash
+cd your-project
+git submodule add <powers-repo-url> .powers
+.powers/scripts/init-project.sh .
+```
 
-- Multi-role gate system (7 gates, mandatory security red-team)
-- Specialist role files (architecture, platform/SRE, quality engineering, etc.)
-- Large archive of reference material
-- Unused stub templates (ADR, threat model, design system template, etc.)
-- Project overlay system
+The script creates `.context/` and the agent entry files, and never overwrites existing ones. If the project already has an `AGENTS.md`, paste the block from `templates/project/AGENTS.md` into it.
 
-The focus is now on practical feature development with progressive disclosure of depth.
+Then ask your agent to start any task. On the first run it fills in `project.md` from the repo and asks you what it can't work out from the code.
+
+With Claude Code you can also install this folder as a skill. The project still needs `.context/` and the `AGENTS.md` block.
+
+## How context stays useful
+
+The rules are in [core/context.md](core/context.md). In short:
+
+- Pointers and one-line facts, not prose or copied code. `project.md` stays under 200 lines.
+- Code wins. A wrong line gets replaced in the same task.
+- Nothing about "what I did this session". That's the git log.
+- Every hand-off ends with a `Context updated:` line, so a skipped update is visible.
+- Context edits ship in the same commit as the code, so you review them in the diff.
+
+## Layout
+
+```text
+SKILL.md          the whole workflow, start here
+core/             context, spec, isolation, implement, debug, prove, review, search, wiring, soul
+frontend/         UI engineering, design system, before/after screenshots, browser control
+on-demand/        security, performance, observability
+templates/        context/, project/ entry files, PR and finding templates
+scripts/          init-project, install-hooks, check-context, check-commit, new-spec, verify
+```

@@ -57,7 +57,7 @@ Each function should:
 - [ ] Make failure explicit (structured results, not swallowed errors)
 - [ ] Let callers choose strict vs relaxed behavior per flow
 
-Check `preferences.md` for project naming and layer conventions.
+Check the Conventions section of `.context/project.md` for naming and layer conventions.
 
 ## Migration checklist
 
@@ -82,18 +82,18 @@ When extracting shared logic:
 ## Example
 
 ```ts
-// emailService.ts — shared mechanics
+// emailService.ts - shared mechanics
 export async function sendWelcomeEmail(params: { to: string; name: string }) {
   const html = `<h1>Welcome ${params.name}</h1>`;
   await emailProvider.send(params.to, "Welcome", html);
 }
 
-// userSignup.ts — orchestration (owns WHEN to send)
+// userSignup.ts - orchestration (owns WHEN to send)
 if (user.marketingOptIn) {
   await sendWelcomeEmail({ to: user.email, name: user.name });
 }
 
-// adminInvite.ts — different business rule, same mechanic
+// adminInvite.ts - different business rule, same mechanic
 await sendWelcomeEmail({ to: invitee.email, name: invitee.name });
 ```
 

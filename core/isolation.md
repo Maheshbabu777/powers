@@ -1,36 +1,14 @@
 ---
 name: isolation
-description: Use before editing code to ensure the workspace and branch are isolated for the current task.
+description: Set up a clean branch before editing code.
 ---
 
 # Isolation
 
-Before editing any code:
+Before editing code:
 
-- [ ] Confirm current branch is **not** `main`
-- [ ] One branch per task — do not mix unrelated changes
-- [ ] Check for uncommitted work that could conflict
-- [ ] Check for open PRs or active branches touching the same files
-- [ ] Confirm dependency/runtime setup belongs to this workspace
+1. Check the current branch. If it's `main` or `master`, create a task branch from an up-to-date base, named like `feat/search-filter` or `fix/login-redirect`. Match the spec slug when there is one.
+2. Check `git status`. If there's uncommitted work you didn't make, stop and ask before touching it.
+3. One branch per task. Don't stack unrelated changes.
 
-## Shared resources are not isolated
-
-Workspaces do **not** isolate:
-- Ports
-- Databases
-- Cloud services
-- Lockfiles
-- Local caches
-
-If another task owns the same files or shared resources, stop and ask for direction.
-
-## Do
-
-- Create a branch from a clean base
-- Name branches clearly (e.g., `fix/login-redirect`, `feat/search-filter`)
-
-## Don't
-
-- Work directly on `main`
-- Stack unrelated changes in one branch
-- Assume a shared database or service is safe to modify without checking
+A branch doesn't isolate shared things: local databases, ports, cloud resources, lockfiles, caches. Ask before running anything that changes a shared database or cloud resource.

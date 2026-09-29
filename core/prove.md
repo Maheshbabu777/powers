@@ -1,45 +1,39 @@
 ---
 name: prove
-description: Use when verifying a change works and collecting evidence that it does.
+description: How to verify a change against its acceptance criteria and show the evidence.
 ---
 
 # Prove
 
-Evidence is required. "It works" or "tests passed" is not enough.
+"It works" isn't evidence. A command and its output is.
 
-## Every verification claim needs
+## For each acceptance criterion
 
-- [ ] **What was checked** — specific behavior or requirement
-- [ ] **How** — command, tool, browser action, or probe used
-- [ ] **Result** — pass/fail, output, screenshot
-- [ ] **Environment** — commit, branch, OS, browser, runtime version
-- [ ] **Caveats** — what was not tested, known gaps
-- [ ] **Untested scope** — name it explicitly, do not silently skip
+Record in the spec, next to the criterion:
 
-## For UI changes
+- how you checked it: test name, command, or the exact manual steps
+- the result: pass or fail, with the relevant output lines
 
-- Prefer before/after screenshots when the change is visual
-- Load `frontend/before-after/SKILL.md` for visual proof tooling
-- Test across breakpoints (desktop, tablet, mobile) when layout is affected
-- Test light and dark themes when theming is involved
+For a small task without a spec, put the same thing in the hand-off report.
 
-## For logic changes
+Add environment details (browser, OS, runtime version) only when they could change the result, like UI rendering or a flaky integration.
 
-- Run the relevant test suite and attach output
-- If no tests exist, note that as untested scope
-- Add tests where feasible — do not just note the gap and move on
+## Test, lint and type check
 
-## Do
+Run [../scripts/verify.sh](../scripts/verify.sh) from the repo root. It runs the commands from the Commands table in `project.md` and prints a block with the commit, each command and its result. Paste that block into the spec. A check it reports as `not run` goes under `Untested`, and if the command exists but isn't in `project.md`, add it there.
 
-- Collect evidence as you go, not after the fact
-- Be honest about what is and isn't covered
+## UI changes
+
+- Before and after screenshots when the change is visual: [../frontend/before-after/SKILL.md](../frontend/before-after/SKILL.md). If the state only appears after clicking through the app: [../frontend/browser-control/SKILL.md](../frontend/browser-control/SKILL.md).
+- Check mobile and desktop widths when layout changed, and light and dark themes when colors changed.
+
+## Logic changes
+
+- Run the test suite that covers the change, using the command from `project.md`, and read the output yourself.
+- If there were no tests for this area, add at least one. If you truly can't, say so under `Untested`.
 
 ## Don't
 
-- Claim "all tests pass" without running them
-- Skip verification because the change looks trivial
-- Hide untested scope — name it clearly
-
-## Before finishing
-
-If this evidence feeds into a commit message, PR body, or doc, run `core/soul.md` on the text. Verification summaries are human-facing and should read like a person wrote them.
+- Say "all tests pass" without having run them in this session.
+- Skip verification because the change looks trivial.
+- Leave out what you didn't test. Name it in the hand-off.
