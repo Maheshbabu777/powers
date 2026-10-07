@@ -22,6 +22,10 @@ Add environment details (browser, OS, runtime version) only when they could chan
 
 Run [../scripts/verify.sh](../scripts/verify.sh) from the repo root. It runs the commands from the Commands table in `project.md` and prints a block with the commit, each command and its result. Paste that block into the spec. A check it reports as `not run` goes under `Untested`, and if the command exists but isn't in `project.md`, add it there.
 
+## Nothing else broke
+
+Follow the before-hand-off steps in [impact.md](impact.md): full suite against the baseline, every critical flow, your diff against the plan, and the new dependency check.
+
 ## UI changes
 
 - Before and after screenshots when the change is visual: [../frontend/before-after/SKILL.md](../frontend/before-after/SKILL.md). If the state only appears after clicking through the app: [../frontend/browser-control/SKILL.md](../frontend/browser-control/SKILL.md).

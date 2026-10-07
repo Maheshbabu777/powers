@@ -36,6 +36,27 @@ Last verified: YYYY-MM-DD at commit <hash>
 <!-- Only ones you can see in the code or the human told you. -->
 - 
 
+## Critical flows
+
+<!-- What must never break, written by the human. One line each: the flow, then its test or the manual steps to check it. Every task checks all of them before hand-off (core/impact.md). Ask the human for these during bootstrap. -->
+- 
+
+## Concerns
+
+<!-- Side effects scripts/impact.sh looks for, one per line as `- name: `regex``. Add a pattern when you find a new kind of side effect. Examples:
+- logging: `logger\.|console\.error`
+- analytics: `gtag\(|analytics\.track|posthog\.capture`
+- email: `sendEmail\(|resend\.`
+- jobs: `queue\.add|cron\.schedule`
+- payments: `stripe\.|razorpay`
+-->
+- 
+
+## Connected systems
+
+<!-- Connections the code doesn't show: webhooks set in a dashboard, other services reading this database, jobs on a server, alerts built on log lines. Ask the human. -->
+- 
+
 ## Gotchas
 
 <!-- One line each, with a file path. Things that cost time to discover. -->
