@@ -47,7 +47,9 @@ Check `.context/specs/` for a spec that matches this task. If one exists, contin
 
 ### 2. Spec (normal and risky)
 
-Follow [core/spec.md](core/spec.md). Create a new spec with [scripts/new-spec.sh](scripts/new-spec.sh) `<slug>`, which also warns about related specs. Write or update `.context/specs/<slug>.md` with the problem, acceptance criteria, what's out of scope, and open questions.
+First find what the change could break: run [scripts/impact.sh](scripts/impact.sh) on the files and functions you expect to touch and follow the before-the-spec steps in [core/impact.md](core/impact.md). If it turns up a public contract, shared data or another service, the task is risky.
+
+Then follow [core/spec.md](core/spec.md). Create a new spec with [scripts/new-spec.sh](scripts/new-spec.sh) `<slug>`, which also warns about related specs. Write or update `.context/specs/<slug>.md` with the problem, acceptance criteria, what's affected, what's out of scope, and open questions.
 
 **Output:** the spec file. Ask the open questions now, not halfway through the code.
 
@@ -70,7 +72,7 @@ If the scope changes while you work, update the spec first, then the code.
 
 ### 5. Verify against the spec
 
-Follow [core/prove.md](core/prove.md). Run [scripts/verify.sh](scripts/verify.sh) for the test, lint and type-check evidence block. Every acceptance criterion gets pass or fail, with the command or step you used and its result. Name anything you didn't test.
+Follow [core/prove.md](core/prove.md). Run [scripts/verify.sh](scripts/verify.sh) for the test, lint and type-check evidence block. Every acceptance criterion gets pass or fail, with the command or step you used and its result. Then check that nothing else broke: the full suite against the baseline, every critical flow in `project.md`, and your diff against the plan ([core/impact.md](core/impact.md#before-hand-off-every-task)). This applies to small tasks too. Name anything you didn't test.
 
 ### 6. Update context and hand off
 
@@ -84,6 +86,8 @@ End with this report, every time, even for small tasks:
 Done: <one line>
 Size: small | normal | risky
 Criteria: <n>/<m> verified (details in .context/specs/<slug>.md)  or  n/a (small task)
+Critical flows: <n>/<m> pass, <list any failed or not checked>
+Regressions: none vs baseline  or  <tests that passed before and fail now>
 Untested: <list, or none>
 Context updated: <files and why>  or  none, because <reason>
 Preference suggestions: <list, or none>
@@ -112,5 +116,6 @@ Run them from the project repo root, as `<powers-path>/scripts/<name>`. They nee
 | [new-spec.sh](scripts/new-spec.sh) | Creates a spec from the template and lists related specs |
 | [check-commit.sh](scripts/check-commit.sh) | Checks commit messages against `.context/preferences.md`. Runs as a git hook, or on demand with `--message` or `--range main..HEAD` |
 | [install-hooks.sh](scripts/install-hooks.sh) | Installs the commit-msg hook. `init-project.sh` runs it for you |
+| [impact.sh](scripts/impact.sh) | Lists who imports or uses the code you'll touch and the side effects they carry. With `--base`, warns about new dependencies and env vars `project.md` doesn't know |
 | [verify.sh](scripts/verify.sh) | Runs checks from the Commands table in `project.md` and prints an evidence block |
 | [capture.sh](frontend/before-after/scripts/capture.sh) | Before/after screenshots. See the before-after skill |

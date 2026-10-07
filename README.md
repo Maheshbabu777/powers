@@ -16,7 +16,7 @@ your-project/
   .kiro/steering/powers.md  entry point for Kiro (only if the project uses Kiro)
   .powers/                  this repo, as a git submodule or a copy
   .context/
-    project.md              stable facts: commands, layout, conventions, gotchas
+    project.md              stable facts: commands, layout, critical flows, side effects, gotchas
     decisions.md            one line per decision
     preferences.md          how you want work done in this repo, e.g. commit rules
     specs/<slug>.md         one spec per feature: criteria, plan, progress
@@ -50,9 +50,9 @@ The rules are in [core/context.md](core/context.md). In short:
 
 ```text
 SKILL.md          the whole workflow, start here
-core/             context, spec, isolation, implement, debug, prove, review, search, wiring, soul
+core/             context, impact, spec, isolation, implement, debug, prove, review, search, wiring, soul
 frontend/         UI engineering, design system, before/after screenshots, browser control
 on-demand/        security, performance, observability
 templates/        context/, project/ entry files, PR and finding templates
-scripts/          init-project, install-hooks, check-context, check-commit, new-spec, verify
+scripts/          init-project, install-hooks, check-context, check-commit, new-spec, impact, verify
 ```

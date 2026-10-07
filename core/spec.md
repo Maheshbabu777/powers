@@ -16,6 +16,7 @@ Before you create one, list `.context/specs/`. If there's already a spec for thi
 - **Acceptance criteria:** numbered. Each one must be checkable with a test, a command, or a specific manual step.
   - Bad: "Search works well."
   - Good: "Searching `foo` on `/items` returns only items whose title contains `foo`, ignoring case."
+- **Affected:** callers, side effects and connected systems this change could break, each with what should happen to it. Comes from [impact.md](impact.md).
 - **Out of scope:** what this change won't do, so nobody quietly expands it.
 - **Open questions:** ask them in chat. Write the answer next to each question once you have it.
 - **Plan:** files to touch in order, the test for each criterion, and risks. Written in step 3 of the workflow.

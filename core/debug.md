@@ -12,7 +12,7 @@ Do not start by editing. Understand first, then fix.
 1. **Reproduce** the failure - get a consistent repro
 2. **Capture evidence** - error messages, logs, stack traces, screenshots
 3. **State expected vs actual** - what should happen vs what does happen
-4. **Identify likely owner files** - check `.context/project.md` Layout and Gotchas, then search
+4. **Identify likely owner files** - check `.context/project.md` Layout and Gotchas, then search. If the bug appeared after a recent change, run [../scripts/impact.sh](../scripts/impact.sh) on that change's files. A broken caller is the usual cause
 5. **Form one hypothesis** - what could cause this specific gap
 6. **Run one meaningful experiment** - test the hypothesis, not a guess
 7. **Interpret the result** - did the experiment confirm or reject?

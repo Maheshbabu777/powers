@@ -10,6 +10,11 @@ Status: draft
 
 1. 
 
+## Affected
+
+<!-- From scripts/impact.sh and project.md Connected systems. One line each: what it is, and unchanged (covered by <test>), changes (criterion n), or unknown (ask). -->
+- 
+
 ## Out of scope
 
 - 
